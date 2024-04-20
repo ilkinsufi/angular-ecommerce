@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MasterService } from '../../_service/master.service';
 import { Posts } from '../../../_model/posts';
+import { Customer } from '../../../_model/Customer';
 
 @Component({
   selector: 'app-customer',
@@ -11,15 +12,15 @@ import { Posts } from '../../../_model/posts';
 })
 export class CustomerComponent implements OnInit {
   constructor(private service: MasterService) {}
-  postsdata!: Posts[];
+  customerdata!: Customer[];
   ngOnInit(): void {
     this.LoadInitialData();
   }
 
   LoadInitialData() {
-    this.service.getAll().subscribe((item) => {
-      this.postsdata = item;
-      console.log(this.postsdata);
+    this.service.GetAllCustomer().subscribe((item) => {
+      this.customerdata = item;
+      console.log(this.customerdata);
     });
   }
 }
