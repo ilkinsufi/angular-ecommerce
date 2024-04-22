@@ -6,12 +6,15 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { tokenInterceptor } from './_service/token.interceptor';
 import { provideStore } from '@ngrx/store';
+import { provideEffects } from '@ngrx/effects';
+import { CustomerReducer } from '../_store/Customer/Customer.Reducer';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes),
     provideAnimationsAsync(),
     provideHttpClient(withInterceptors([tokenInterceptor])),
-    provideStore()
+    provideStore({'customer': CustomerReducer}),
+    provideEffects()
 ],
 };
